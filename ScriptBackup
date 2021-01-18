@@ -1,0 +1,1 @@
+sudo docker exec -t container-postgres pg_dump --format=c  --username postgres dbPolicia > /tmp/bkp/dump.sql
