@@ -20,3 +20,5 @@ docker run --name container-pgadmin --network=postgres-network -p 15432:80 -e "P
 /* minio client */
 sudo apt update
 sudo apt install snapd
+sudo snap install minio-client --edge --devmode
+
