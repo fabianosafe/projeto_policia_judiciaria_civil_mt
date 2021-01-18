@@ -1,1 +1,11 @@
-sudo docker exec -t container-postgres pg_dump --format=c  --username postgres dbPolicia > /tmp/bkp/dump.sql
+/* para o servico de backup */
+/* instalei o cron e deixei agendado o backup */
+
+sudo apt-get install cron
+crontab -e
+
+/* inseri a linha no final do arquivo e salvei*/
+
+00 02 * * * docker exec -t container-postgres pg_dump --format=c --username postgres dbPolicia > /tmp/bkp/dump.sql
+
+
