@@ -1,8 +1,8 @@
 /* para configurar o acesso na rede 192.168.0.0/24, editei o arquivo pg_hba.conf que estava no volume /home/fabiano/PostgreSQL */
-/* acrescentando a linha abaixo
+/* acrescentando a linha abaixo e salvando o arquivo
 host    dbPolicia       all             192.168.0.0/24          trust
 
-/* para o tuning(postgresql.conf), usei o editor querry no pgadmin4, executando cada linha abaixo separadamente e no final fiz um Reload Server Configuration */
+/* para o tuning(postgresql.conf), usei o editor querry no pgadmin4, executando cada linha abaixo separadamente e no final fiz um Reload Configuration */
 ALTER SYSTEM SET shared_buffers = '8GB'; /* ambiente linux faz melhor uso da memoria(aloca), otimizado para 1/4 do disponivel da ram: 32/4=8GB*/
 ALTER SYSTEM SET effective_cache_size = '24GB';/* memoria cache de buffer usada nos indices pelo planner(nao aloca), otimizado para 3/4 do disponivel da ram: 32/4*3=24GB*/
 ALTER SYSTEM SET maintenance_work_mem = '2GB';/* memoria maxima usada em operações de manutenção(pouco usado): creates, alters table, dumps...*/
