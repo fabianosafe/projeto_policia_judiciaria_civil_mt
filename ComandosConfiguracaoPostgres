@@ -7,13 +7,24 @@ ALTER SYSTEM SET effective_cache_size = '24GB';
 /* memoria maxima usada em operações de manutenção(pouco usado): creates, alters table, dumps...*/
 ALTER SYSTEM SET maintenance_work_mem = '2GB';
 
-/* memoria maxima usada em operações de manutenção(pouco usado): creates, alters table, dumps...*/
+/* aumentando a gravações do ponto de verificação para 0.9(padrao 0.5) reduzindo a sobrecarga média de gravação */
 ALTER SYSTEM SET checkpoint_completion_target = '0.9';
 
 /* wal_buffers é 1/32 do tamanho de shared_buffers. Maximo 16MB */
 ALTER SYSTEM SET wal_buffers = '16MB';
 
 /* tempo estimado de pesquisa para proxima pagina de disco aleatoria. */
-ALTER SYSTEM SET random_page_cost = '1.1';
+ALTER SYSTEM SET random_page_cost = '0.5';
 
+/* número de operações in out do disco, no caso SSD. */
+ALTER SYSTEM SET effective_io_concurrency = '200';
+
+/* espaco minimo reservado para o uso do WAL, precisa levar em consideracao a quantidade de acessos */
+ALTER SYSTEM SET min_wal_size = '1GB';
+
+/* espaco maximo destinado ao uso do WAL, precisa levar em consideracao a quantidade de acessos */
+ALTER SYSTEM SET max_wal_size = '4GB';
+
+/* aumentando de 2 paa 4 o numero de "workes" para consultas paralelas(mais efetividade) */
+ALTER SYSTEM SET max_parallel_workers_per_gather = '4';
 
