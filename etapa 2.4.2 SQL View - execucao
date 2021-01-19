@@ -1,0 +1,3 @@
+refresh materialized view conveniencia.vwmat_estilo_cliente;
+
+select * from conveniencia.vwmat_estilo_cliente;
