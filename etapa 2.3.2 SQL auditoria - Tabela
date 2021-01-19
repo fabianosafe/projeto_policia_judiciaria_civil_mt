@@ -23,7 +23,7 @@ IS 'I nsert
 D elete
 U pdate';
 
-CREATE TRIGGER venda_auditoria_tr
+CREATE TRIGGER venda_tr
   AFTER INSERT OR UPDATE OR DELETE 
-  ON conveniencia.venda_auditoria FOR EACH ROW 
+  ON conveniencia.venda FOR EACH ROW 
   EXECUTE PROCEDURE conveniencia.fn_venda_auditoria();
