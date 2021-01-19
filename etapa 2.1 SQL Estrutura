@@ -35,7 +35,8 @@ CREATE TABLE conveniencia.usuario (
   senha          VARCHAR(120) NOT NULL,
   ativo          SMALLINT     NOT NULL,
   datanascimento DATE         ,
-  CONSTRAINT pk_usuario PRIMARY KEY (codigo));
+  CONSTRAINT pk_usuario PRIMARY KEY (codigo),
+  CONSTRAINT usuario_nome_key UNIQUE(nome));
 
 CREATE TABLE conveniencia.venda (
   codigo            BIGINT        NOT NULL ,
