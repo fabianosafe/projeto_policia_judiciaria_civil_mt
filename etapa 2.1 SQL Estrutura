@@ -57,8 +57,10 @@ CREATE TABLE conveniencia.item_venda (
   codigo         BIGINT        NOT NULL ,
   quantidade     INTEGER       NOT NULL,
   valor_unitario DECIMAL(10,2) NOT NULL,
+  codigo_cerveja BIGINT        NOT NULL,
   codigo_venda   BIGINT        NOT NULL,
   CONSTRAINT pk_item_venda PRIMARY KEY (codigo),
+  CONSTRAINT item_venda_fk_cerveja FOREIGN KEY (codigo_cerveja) REFERENCES conveniencia.cerveja(codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT item_venda_fk_venda FOREIGN KEY (codigo_venda) REFERENCES conveniencia.venda (codigo) ON DELETE RESTRICT ON UPDATE CASCADE);
 
 CREATE TABLE conveniencia.grupo (
