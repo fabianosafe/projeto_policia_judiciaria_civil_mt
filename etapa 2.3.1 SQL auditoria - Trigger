@@ -1,3 +1,5 @@
+/*função criada visando a utilizacao por triggers de outras tabelas tambem*/
+
 CREATE OR REPLACE FUNCTION conveniencia.fn_venda_auditoria (
 )
 RETURNS trigger AS
