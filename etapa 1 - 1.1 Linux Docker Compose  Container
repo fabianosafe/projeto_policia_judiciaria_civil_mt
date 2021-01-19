@@ -11,8 +11,6 @@ sudo docker pull postgres:12
 sudo docker pull dpage/pgadmin4
 sudo docker pull minio/minio
 
-https://renatogroffe.medium.com/postgresql-docker-executando-uma-inst%C3%A2ncia-e-o-pgadmin-4-a-partir-de-containers-ad783e85b1a4
-
 docker network create --driver bridge postgres-network
 docker run --name container-postgres --network=postgres-network -e "POSTGRES_PASSWORD=1234" -p 5432:5432 -v /home/fabiano/PostgreSQL:/var/lib/postgresql/data -d postgres:12
 docker run --name container-pgadmin --network=postgres-network -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=fabianosafe@gmail.com" -e "PGADMIN_DEFAULT_PASSWORD=1234" -d dpage/pgadmin4
