@@ -1,4 +1,4 @@
 CREATE TRIGGER venda_tr
   AFTER INSERT OR UPDATE OR DELETE 
   ON conveniencia.venda FOR EACH ROW 
-  EXECUTE PROCEDURE conveniencia.fn_venda_auditoria();
+  EXECUTE PROCEDURE conveniencia.fn_auditoria();
