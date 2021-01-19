@@ -1,6 +1,6 @@
 /*função criada visando a utilizacao por triggers de outras tabelas tambem*/
 
-CREATE OR REPLACE FUNCTION conveniencia.fn_venda_auditoria (
+CREATE OR REPLACE FUNCTION conveniencia.fn_auditoria (
 )
 RETURNS trigger AS
 $body$
@@ -45,9 +45,11 @@ FOR r IN SELECT column_name
                 ELSE
                    v_sql := v_sql ||' null '; 
                 END IF;
-                
-             execute 'insert into conveniencia.venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
-                     ' values ('||old.codigo||', ''U'', '||v_codigo_usuario||', '||quote_literal(r.column_name)||', '||v_sql||' );';
+                --raise notice ' valor velho %  valor novo  %',v_valor_velho,v_valor_novo;
+                --raise notice ' v_velho_nulo %  v_novo_nulo  %',v_velho_nulo,v_novo_nulo;
+                --raise notice ' campo % ',r.column_name;
+                execute 'insert into conveniencia.venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
+                        ' values ('||old.codigo||', ''U'', '||v_codigo_usuario||', '||quote_literal(r.column_name)||', '||v_sql||' );';
              END IF;           
           END IF;
        END IF;
