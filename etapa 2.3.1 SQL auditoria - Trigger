@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION public.fn_venda_auditoria (
+CREATE OR REPLACE FUNCTION conveniencia.fn_venda_auditoria (
 )
 RETURNS trigger AS
 $body$
@@ -11,21 +11,21 @@ DECLARE
  v_sql text;
  r record;
 BEGIN                
-Select USU.CODIGO from USUARIO USU WHERE USU.nome = CURRENT_USER into v_codigo_usuario;
+Select USU.CODIGO from conveniencia.usuario USU WHERE USU.nome = CURRENT_USER into v_codigo_usuario;
 FOR r IN SELECT column_name 
          from information_schema.columns 
-         WHERE table_schema = 'public'
+         WHERE table_schema = 'conveniencia'
           and  table_name   = TG_TABLE_NAME
     LOOP
        IF TG_OP = 'DELETE' THEN 
-          execute 'insert into venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
+          execute 'insert into conveniencia.venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
                   ' values ('||old.codigo||', ''D'', '||v_codigo_usuario||', '||quote_literal(r.column_name)||', '||old.id||' , null );';
        ELSE
           execute 'Select $1.'||r.column_name ||' , '||
                   ' case when $1.'||r.column_name||' is null then 1 else 0 end ' using NEW into v_valor_novo, v_novo_nulo;             
           IF TG_OP = 'INSERT' THEN
              IF v_novo_nulo = 0 THEN
-                execute 'insert into venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
+                execute 'insert into conveniencia.venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
                         ' values ('||new.codigo||', ''I'', '||v_codigo_usuario||', '||quote_literal(r.column_name)||', null , '||quote_literal(v_valor_novo)||' );';
              END IF;
           ELSE
@@ -44,7 +44,7 @@ FOR r IN SELECT column_name
                    v_sql := v_sql ||' null '; 
                 END IF;
                 
-             execute 'insert into venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
+             execute 'insert into conveniencia.venda_auditoria (chave, operacao, usuario_codigo, campo , valor_velho, valor_novo ) '||
                      ' values ('||old.codigo||', ''U'', '||v_codigo_usuario||', '||quote_literal(r.column_name)||', '||v_sql||' );';
              END IF;           
           END IF;
