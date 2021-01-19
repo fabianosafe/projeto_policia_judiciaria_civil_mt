@@ -1,0 +1,10 @@
+CREATE ROLE usr_relatorio NOINHERIT NOREPLICATION LOGIN PASSWORD '1234';
+REVOKE ALL PRIVILEGES ON SCHEMA conveniencia FROM usr_relatorio CASCADE;
+REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA conveniencia FROM usr_relatorio CASCADE;
+REVOKE ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA conveniencia FROM usr_relatorio CASCADE;
+REVOKE ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA conveniencia FROM usr_relatorio CASCADE;
+
+GRANT CONNECT ON DATABASE "dbPolicia" TO usr_relatorio;
+GRANT USAGE ON SCHEMA conveniencia TO usr_relatorio;
+GRANT SELECT ON conveniencia.vwmat_estilo_cliente TO usr_relatorio;
+GRANT SELECT ON conveniencia.venda_auditoria TO usr_relatorio;
