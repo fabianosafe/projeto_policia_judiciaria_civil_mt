@@ -1,24 +1,23 @@
 CREATE TABLE conveniencia.venda_auditoria (
-  id BIGSERIAL,
-  tabela TEXT NOT NULL,
-  chave BIGINT NOT NULL,
-  operacao VARCHAR(1) NOT NULL,
-  usuario_codigo BIGINT NOT NULL,
-  campo TEXT NOT NULL,
-  valor_velho TEXT,
-  valor_novo TEXT,
-  data_hora TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT now() NOT NULL,
-  CONSTRAINT venda_auditoria_pkey PRIMARY KEY(id)
-) 
-WITH (oids = false);
+  id             BIGSERIAL,
+  tabela         TEXT       NOT NULL,
+  chave          BIGINT     NOT NULL,
+  operacao       VARCHAR(1) NOT NULL,
+  usuario_codigo BIGINT     NOT NULL,
+  campo          TEXT       NOT NULL,
+  valor_velho    TEXT,
+  valor_novo     TEXT,
+  data_hora      TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT now() NOT NULL,
+  CONSTRAINT pk_venda_auditoria PRIMARY KEY(id)
+);
 
-ALTER TABLE public.venda_auditoria
+ALTER TABLE conveniencia.venda_auditoria
   ALTER COLUMN id SET STATISTICS 0;
 
-COMMENT ON COLUMN public.venda_auditoria.chave
+COMMENT ON COLUMN conveniencia.venda_auditoria.chave
 IS 'chave primaria do registro';
 
-COMMENT ON COLUMN public.venda_auditoria.operacao
+COMMENT ON COLUMN conveniencia.venda_auditoria.operacao
 IS 'I nsert
 D elete
 U pdate';
