@@ -4,5 +4,5 @@ Select c.descricao as NomeCerveja,
        coalesce((select sum(iv.quantidade)
                  from conveniencia.item_venda iv 
                  where iv.codigo_cerveja = c.codigo),0)  as QuantidadeVendida
-      from conveniencia.cerveja c
+from conveniencia.cerveja c
 order by 2 desc
