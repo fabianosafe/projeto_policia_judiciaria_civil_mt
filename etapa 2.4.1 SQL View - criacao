@@ -1,3 +1,5 @@
+/* 4) Crie uma view materializada que liste os cliente e os estilos de cerveja que costuma comprar (exibir nome do cliente e nome do estilo); */
+
 CREATE MATERIALIZED VIEW conveniencia.vwmat_estilo_cliente (
     nome_cliente,
     nome_estilo)
