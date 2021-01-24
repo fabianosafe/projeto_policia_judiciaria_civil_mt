@@ -1,3 +1,4 @@
+/*Criação da trigger com as 3 operações selecionando(vinculando) a função fn_auditoria para chamada */
 CREATE TRIGGER venda_tr
   AFTER INSERT OR UPDATE OR DELETE 
   ON conveniencia.venda FOR EACH ROW 
