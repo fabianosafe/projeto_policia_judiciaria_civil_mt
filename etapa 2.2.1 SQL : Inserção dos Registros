@@ -1,3 +1,4 @@
+/* 2) Construa um script que faça a inserção de pelo menos 3 registros em cada tabela; */
 /* script abaixo pode ser executado no editor de script sem separação de tabelas*/
 /* para cidade e estado, utilizei a tabela do ibge e fiz um insert com todas as cidades e estados*/
 /* para as tabelas de permissões fiz manualmente*/
