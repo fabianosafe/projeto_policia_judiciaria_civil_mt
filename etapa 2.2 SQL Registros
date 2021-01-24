@@ -1,3 +1,6 @@
+/* script abaixo pode ser executado no editor de script sem separação de tabelas*/
+/* usei o site generatedata para popular a maioria das tabelas, depois disso, apaguei(via script) as cidades e estados que não tinham referencia */
+
 INSERT INTO conveniencia.estado ("codigo", "nome", "sigla")
 VALUES 
   (11, 'Rondônia', 'RO'),
