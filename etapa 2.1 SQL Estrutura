@@ -1,3 +1,5 @@
+/* 1) Construa um script SQL (projeto físico) para criar e popular um banco de dados que deverá ser nominado de conveniencia; */
+
 CREATE SCHEMA conveniencia AUTHORIZATION postgres;
 
 CREATE TABLE conveniencia.estado (
