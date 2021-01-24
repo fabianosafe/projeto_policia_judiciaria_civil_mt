@@ -1,3 +1,5 @@
+ /* caso precise atualizar a view materializada ou for a primeira execução*/
 refresh materialized view conveniencia.vwmat_estilo_cliente;
 
+/* selecionando */
 select * from conveniencia.vwmat_estilo_cliente;
