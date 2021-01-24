@@ -1,4 +1,8 @@
-/* Conceder permissão o usr_relatorio conectar-se no banco de dados conveniencia e realizar a leitura somente da view criada no item 4 e da tabela de auditoria criada no item 3; */
+/*
+6) Crie um usuário usr_relatorio para o banco de dados conveniência;
+7) Revogar toda e qualquer permissão relativa ao usr_relatorio;
+8) Conceder permissão o usr_relatorio conectar-se no banco de dados conveniencia e realizar a leitura somente da view criada no item 4 e da tabela de auditoria criada no item 3; 
+*/
 
 /*criando usuario no postgres*/
 CREATE ROLE usr_relatorio NOINHERIT NOREPLICATION LOGIN PASSWORD '1234'; 
