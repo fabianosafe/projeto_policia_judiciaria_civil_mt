@@ -1,0 +1,37 @@
+/*os scripts abaixo foram executados separadamente no editor query*/
+
+/* apaguando as cidades e estados sem referencia */
+delete from conveniencia.cidade 
+where codigo not in (select c.codigo_cidade
+                     from conveniencia.cliente c
+                     group by 1)
+
+delete from conveniencia.estado 
+where codigo not in (select c.codigo_estado
+                     from conveniencia.cidade c
+                     group by 1)
+
+/*apagando as vendas sem itens*/
+delete from conveniencia.venda v 
+where codigo not in(select iv.codigo_venda
+                    from conveniencia.item_venda iv 
+                    group by 1)
+
+/* editando o valor conforme cadastro */
+update conveniencia.item_venda set valor_unitario = sub.valor 
+from (select c.valor, c.codigo as codigo_cerveja from conveniencia.cerveja c ) as sub
+where conveniencia.item_venda.codigo_cerveja = sub.codigo_cerveja
+
+/* Valor total da venda*/
+update conveniencia.venda set valor_total = sub.soma
+from (select sum(c.valor_unitario*c.quantidade) as soma, 
+             c.codigo_venda 
+      from conveniencia.item_venda c 
+      group by c.codigo_venda) as sub
+where conveniencia.venda.codigo = sub.codigo_venda
+
+/* venda <> finalizado ainda nao foi entregue*/
+update conveniencia.venda set data_hora_entrega = null
+where conveniencia.venda.status <> 'FINALIZADO'
+
+
