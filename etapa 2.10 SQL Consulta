@@ -1,0 +1,11 @@
+/* 10) Escreva uma sentença SQL que exiba uma lista da quantidade de vendas realizadas pelos usuários por mês no corrente ano (Retornar nome do usuário, ano da venda, mês da venda, quantidade vendida); */
+
+Select u.nome, 
+       extract(year from v.data_criacao) as ano,
+       extract(month from v.data_criacao) as mes,
+       count(V.codigo) as quantidade_de_vendas
+from conveniencia.usuario u
+join conveniencia.venda v on v.codigo_usuario = u.codigo
+where extract(year from v.data_criacao) = extract(year from current_date)
+group by 1,2,3
+order by 1,2,3 desc
