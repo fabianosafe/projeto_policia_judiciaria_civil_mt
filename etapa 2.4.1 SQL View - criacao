@@ -5,17 +5,19 @@ CREATE MATERIALIZED VIEW conveniencia.vwmat_estilo_cliente (
     nome_estilo)
 AS
  SELECT c.nome AS nome_cliente,
-    ( SELECT sub1.nomeestilo
-           FROM ( SELECT e.nome AS nomeestilo,
-                    sum(iv.quantidade) AS totalcomprado
-                   FROM conveniencia.venda v
-                     JOIN conveniencia.item_venda iv ON iv.codigo_venda = v.codigo
-                     JOIN conveniencia.cerveja ce ON ce.codigo = iv.codigo_cerveja
-                     JOIN conveniencia.estilo e ON e.codigo = ce.codigo_estilo
-                  WHERE v.codigo_cliente = c.codigo
-                  GROUP BY e.nome
-                  ORDER BY sum(iv.quantidade) DESC
-                 LIMIT 1) sub1) AS nome_estilo
+        (SELECT sub1.nomeestilo
+         FROM (SELECT e.nome AS nomeestilo,
+                      sum(iv.quantidade) AS totalcomprado
+               FROM conveniencia.venda v
+               JOIN conveniencia.item_venda iv ON iv.codigo_venda = v.codigo
+               JOIN conveniencia.cerveja ce    ON ce.codigo       = iv.codigo_cerveja
+               JOIN conveniencia.estilo e      ON e.codigo        = ce.codigo_estilo
+               WHERE v.codigo_cliente = c.codigo
+               GROUP BY e.nome
+               ORDER BY sum(iv.quantidade) DESC
+               LIMIT 1
+               ) sub1
+        ) AS nome_estilo
    FROM conveniencia.cliente c
   ORDER BY c.nome
   WITH NO DATA;
