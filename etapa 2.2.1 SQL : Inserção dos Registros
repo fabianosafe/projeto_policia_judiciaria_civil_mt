@@ -1,5 +1,8 @@
 /* script abaixo pode ser executado no editor de script sem separação de tabelas*/
-/* usei o site generatedata para popular a maioria das tabelas, depois disso, apaguei(via script) as cidades e estados que não tinham referencia */
+/* para cidade e estado, utilizei a tabela do ibge e fiz um insert com todas as cidades e estados*/
+/* para as tabelas de permissões fiz manualmente*/
+/* para outras tabelas, usei o site generatedata para popular */
+/* tive o cuidado de ao gerar os dados, que os mesmos possuissem referencia quando em colunas com FK*/
 
 INSERT INTO conveniencia.estado ("codigo", "nome", "sigla")
 VALUES 
