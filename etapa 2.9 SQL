@@ -1,0 +1,8 @@
+/* 9) Escreva uma sentença SQL que exiba uma lista das cervejas vendidas ordenadas primeiramente pela quantidade de vendas. É imprescindível que nesta lista apareça as cervejas que não tiveram vendas realizadas com o numeral zero; */
+
+Select c.descricao as NomeCerveja,
+       coalesce((select sum(iv.quantidade)
+                 from conveniencia.item_venda iv 
+                 where iv.codigo_cerveja = c.codigo),0)  as QuantidadeVendida
+      from conveniencia.cerveja c
+order by 2 desc
