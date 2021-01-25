@@ -1,0 +1,13 @@
+/* 11) Escreva uma sentença SQL que exiba quanto de comissão em valores recebeu o primeiro usuário cadastrado em sua base de dados (normalmente com id 1) em razão das vendas que realizou.*/
+
+Select u.nome as nome_usuario, 
+       sum(ce.comissao*iv.quantidade) AS valortotal_comissao
+from conveniencia.usuario u
+join conveniencia.venda v on v.codigo_usuario = u.codigo
+join conveniencia.item_venda iv on iv.codigo_venda = v.codigo
+join conveniencia.cerveja ce on ce.codigo = iv.codigo_cerveja
+where u.codigo = (select codigo 
+                  from conveniencia.usuario
+                  order by codigo
+                  limit 1)
+group by 1
