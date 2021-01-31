@@ -58,10 +58,18 @@ sudo docker run --name container-postgres --network=postgres-network -e "POSTGRE
 //-d      : determina rodar como servico em background e o nome da imagem baixada
 sudo docker run --name container-pgadmin --network=postgres-network -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=fabianosafe@gmail.com" -e "PGADMIN_DEFAULT_PASSWORD=1234" -d dpage/pgadmin4
 
+//verificando se containers estao criados
+sudo docker ps
+
+//resultado
+//CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                            NAMES
+//976067ccc2cc   dpage/pgadmin4   "/entrypoint.sh"         13 minutes ago   Up 13 minutes   443/tcp, 0.0.0.0:15432->80/tcp   container-pgadmin
+//9372d15f74ba   postgres:12      "docker-entrypoint.s…"   14 minutes ago   Up 14 minutes   0.0.0.0:5432->5432/tcp           container-postgres
+
 //depois de criado os containers, acessamos o pgadmin no browser pelo endereco
 //http://localhost:15432/
 
-
+//baixando a imagem do minio
 sudo docker pull minio/minio
 
 /* minio client */
