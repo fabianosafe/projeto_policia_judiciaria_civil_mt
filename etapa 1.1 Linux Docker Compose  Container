@@ -1,19 +1,68 @@
+//atualizando pacotes
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+//chave GPG > repositório Docker 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+//repositório do Docker às fontes do APT
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+//atualizando pacotes novamente
 sudo apt update
+
+//verificando se instalacao apontara para repositorio docker
 apt-cache policy docker-ce
+
+//instalando docker
 sudo apt install docker-ce
+
+//verificando se instalado. Precise retornar "Active: active (running)" 
 sudo systemctl status docker
 
+//baixando a imagem do postgres12 e pgadmin4
 sudo docker pull postgres:12
 sudo docker pull dpage/pgadmin4
-sudo docker pull minio/minio
 
-docker network create --driver bridge postgres-network
-docker run --name container-postgres --network=postgres-network -e "POSTGRES_PASSWORD=1234" -p 5432:5432 -v /home/fabiano/PostgreSQL:/var/lib/postgresql/data -d postgres:12
-docker run --name container-pgadmin --network=postgres-network -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=fabianosafe@gmail.com" -e "PGADMIN_DEFAULT_PASSWORD=1234" -d dpage/pgadmin4
+//verificando as imagens
+sudo docker images
+
+//resultado
+//REPOSITORY       TAG       IMAGE ID       CREATED      SIZE
+//dpage/pgadmin4   latest    7db8147d0c7b   6 days ago   278MB
+//postgres         12        898ffae1aafe   9 days ago   314MB
+
+//criando uma rede no docker chamada postgres-network que sera utilizadas pelos containers
+sudo docker network create --driver bridge postgres-network
+
+//verificando as redes do docker
+sudo docker network ls
+
+//resultado
+//e842cbb7bbae   postgres-network   bridge    local
+
+//criando um container para uma instância do PostgreSQL12
+//name    : nome para o container que sera criado
+//network : rede que criamos logo acima
+//-p      : porta (padrao postgres 5432)
+//-v      : Volume (local dos dados do container)  
+//-d      : determina rodar como servico em background e o nome da imagem baixada
+sudo docker run --name container-postgres --network=postgres-network -e "POSTGRES_PASSWORD=1234" -p 5432:5432 -v /home/fabiano/PostgreSQL:/var/lib/postgresql/data -d postgres:12
+
+//criando um container para uma instância do pgAdmin4
+//name    : nome para o container que sera criado
+//network : rede que criamos logo acima
+//-p      : especifica a porta (15432) de comunicação com o pgAdmin4, a qual será mapeada para a porta default (80) desta aplicação Web;
+//PGADMIN_DEFAULT_EMAIL : e-mail de acesso;
+//PGADMIN_DEFAULT_PASSWORD :senha de acesso;
+//-d      : determina rodar como servico em background e o nome da imagem baixada
+sudo docker run --name container-pgadmin --network=postgres-network -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=fabianosafe@gmail.com" -e "PGADMIN_DEFAULT_PASSWORD=1234" -d dpage/pgadmin4
+
+//depois de criado os containers, acessamos o pgadmin no browser pelo endereco
+//http://localhost:15432/
+
+
+sudo docker pull minio/minio
 
 /* minio client */
 sudo apt update
