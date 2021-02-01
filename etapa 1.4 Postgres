@@ -1,10 +1,10 @@
-/* para o tuning(postgresql.conf), usei o editor querry no pgadmin4, executando cada linha abaixo separadamente e no final fiz um Reload Configuration */
+/* para o tuning(postgresql.conf), usei o editor query no pgadmin4, executando cada linha abaixo separadamente e no final fiz um Reload Configuration */
 ALTER SYSTEM SET shared_buffers = '8GB'; /* ambiente linux faz melhor uso da memoria(aloca), otimizado para 1/4 do disponivel da ram: 32/4=8GB*/
 ALTER SYSTEM SET effective_cache_size = '24GB';/* memoria cache de buffer usada nos indices pelo planner(nao aloca), otimizado para 3/4 do disponivel da ram: 32/4*3=24GB*/
 ALTER SYSTEM SET maintenance_work_mem = '2GB';/* memoria maxima usada em operações de manutenção(pouco usado): creates, alters table, dumps...*/
 ALTER SYSTEM SET checkpoint_completion_target = '0.9';/* aumentando a gravações do ponto de verificação para 0.9(padrao 0.5) reduzindo a sobrecarga média de gravação */
 ALTER SYSTEM SET wal_buffers = '16MB';/* wal_buffers é 1/32 do tamanho de shared_buffers. Maximo 16MB */
-ALTER SYSTEM SET random_page_cost = '0.5';/* tempo estimado de pesquisa para proxima pagina de disco aleatoria. */
+ALTER SYSTEM SET random_page_cost = '1.1';/* tempo estimado de pesquisa para proxima pagina de disco aleatoria. */
 ALTER SYSTEM SET effective_io_concurrency = '200';/* número de operações in out do disco, no caso SSD. */
 ALTER SYSTEM SET min_wal_size = '1GB';/* espaco minimo reservado para o uso do WAL, precisa levar em consideracao a quantidade de acessos */
 ALTER SYSTEM SET max_wal_size = '4GB';/* espaco maximo destinado ao uso do WAL, precisa levar em consideracao a quantidade de acessos */
