@@ -4,7 +4,7 @@
 sudo apt-get install cron
 crontab -e
 
-/* inseri a linha no final do arquivo e salvei*/
+/* inseri a linha abaixo no final do arquivo e salvei*/
 
 00 02 * * * docker exec -t container-postgres pg_dump --format=c --username postgres dbPolicia > /tmp/bkp/dump.sql
 
