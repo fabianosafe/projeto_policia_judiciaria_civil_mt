@@ -1,5 +1,20 @@
 /* minio client */
 
+//acessar pelo browser http://127.0.0.1:9000/minio/
+//usuario minioadmin
+//senha minioadmin
+
+
+/* minio client */
+wget https://dl.min.io/client/mc/release/linux-amd64/mc_0.0.20210130005042_amd64.deb
+dpkg -i minio_0.0.20210130005042_amd64.deb
+mc alias set myminio/ http://MINIO-SERVER MYUSER MYPASSWORD
+
+sudo apt update
+sudo apt install snapd
+sudo snap install minio-client --edge --devmode
+
+
 sudo apt update
 sudo apt install snapd
 sudo snap install minio-client --edge --devmode
