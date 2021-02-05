@@ -8,7 +8,7 @@ REVOKE ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA conveniencia FROM usr_relatorio
 REVOKE ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA conveniencia FROM usr_relatorio CASCADE;
 
 /* 8) Conceder permissão o usr_relatorio conectar-se no banco de dados conveniencia e realizar a leitura somente da view criada no item 4 e da tabela de auditoria criada no item 3; */
-GRANT CONNECT ON DATABASE "dbpolicia" TO usr_relatorio;
+GRANT CONNECT ON DATABASE "dbPolicia" TO usr_relatorio;
 GRANT USAGE ON SCHEMA conveniencia TO usr_relatorio;
 GRANT SELECT ON conveniencia.vwmat_estilo_cliente TO usr_relatorio;
 GRANT SELECT ON conveniencia.venda_auditoria TO usr_relatorio;
