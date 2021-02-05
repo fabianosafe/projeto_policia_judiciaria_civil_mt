@@ -5,6 +5,9 @@
 /* para outras tabelas, usei o site generatedata para popular */
 /* tive o cuidado de ao gerar os dados, que os mesmos possuissem referencia quando em colunas com FK*/
 
+//vá em Tools > Query Tool
+//cole todo o texto abaixo e execute(f5), vai aparecer a msg : Query returned successfully in xxxx msec.
+
 INSERT INTO conveniencia.estado ("codigo", "nome", "sigla")
 VALUES 
   (11, 'Rondônia', 'RO'),
@@ -141,6 +144,12 @@ VALUES
   (5, 'CADASTRO ESTILO'),
   (6, 'CADASTRO USUARIO'),
   (7, 'CADASTRO VENDA');
+
+INSERT INTO conveniencia.grupo ("codigo", "nome")
+VALUES 
+  (1, 'ADMINISTRADOR'),
+  (2, 'GERENTE'),
+  (3, 'VENDEDOR');
   
 INSERT INTO conveniencia.grupo_permissao ("codigo_grupo", "codigo_permissao")
 VALUES 
@@ -158,65 +167,6 @@ VALUES
   (3, 3),
   (3, 7);  
 
-INSERT INTO conveniencia.grupo ("codigo", "nome")
-VALUES 
-  (1, 'ADMINISTRADOR'),
-  (2, 'GERENTE'),
-  (3, 'VENDEDOR');
-
-INSERT INTO conveniencia.usuario_grupo ("codigo_usuario", "codigo_grupo")
-VALUES 
-  (1, 3),
-  (2, 2),
-  (3, 2),
-  (4, 2),
-  (5, 3),
-  (6, 2),
-  (7, 3),
-  (8, 3),
-  (9, 2),
-  (10, 3),
-  (11, 1),
-  (12, 3),
-  (13, 2),
-  (14, 3),
-  (15, 2),
-  (16, 2),
-  (17, 2),
-  (18, 1),
-  (19, 1),
-  (20, 1),
-  (21, 2),
-  (22, 2),
-  (23, 2),
-  (24, 2),
-  (25, 2),
-  (26, 2),
-  (27, 2),
-  (28, 1),
-  (29, 3),
-  (30, 1),
-  (31, 3),
-  (32, 3),
-  (33, 2),
-  (34, 1),
-  (35, 2),
-  (36, 2),
-  (37, 1),
-  (38, 1),
-  (39, 3),
-  (40, 1),
-  (41, 1),
-  (42, 1),
-  (43, 1),
-  (44, 2),
-  (45, 1),
-  (46, 1),
-  (47, 3),
-  (48, 1),
-  (49, 1),
-  (50, 3);  
-        
 INSERT INTO conveniencia.usuario ("codigo", "nome", "email", "senha", "ativo", "datanascimento")
 VALUES 
   (1, 'Caesar', 'mi.felis@interdumenimnon.ca', 'amet', 0, '2020-05-04'),
@@ -269,6 +219,59 @@ VALUES
   (48, 'Malcolm', 'Nulla.tempor.augue@Nunc.com', 'amet', 0, '2021-07-24'),
   (49, 'Joel', 'aliquam.iaculis.lacus@tempusmauris.org', 'malesuada', 0, '2021-10-09'),
   (50, 'Jesse', 'semper.dui.lectus@vel.ca', 'Ut', 0, '2020-08-17');  
+  
+INSERT INTO conveniencia.usuario_grupo ("codigo_usuario", "codigo_grupo")
+VALUES 
+  (1, 3),
+  (2, 2),
+  (3, 2),
+  (4, 2),
+  (5, 3),
+  (6, 2),
+  (7, 3),
+  (8, 3),
+  (9, 2),
+  (10, 3),
+  (11, 1),
+  (12, 3),
+  (13, 2),
+  (14, 3),
+  (15, 2),
+  (16, 2),
+  (17, 2),
+  (18, 1),
+  (19, 1),
+  (20, 1),
+  (21, 2),
+  (22, 2),
+  (23, 2),
+  (24, 2),
+  (25, 2),
+  (26, 2),
+  (27, 2),
+  (28, 1),
+  (29, 3),
+  (30, 1),
+  (31, 3),
+  (32, 3),
+  (33, 2),
+  (34, 1),
+  (35, 2),
+  (36, 2),
+  (37, 1),
+  (38, 1),
+  (39, 3),
+  (40, 1),
+  (41, 1),
+  (42, 1),
+  (43, 1),
+  (44, 2),
+  (45, 1),
+  (46, 1),
+  (47, 3),
+  (48, 1),
+  (49, 1),
+  (50, 3);  
   
 INSERT INTO conveniencia.estilo ("codigo", "nome")
 VALUES 
