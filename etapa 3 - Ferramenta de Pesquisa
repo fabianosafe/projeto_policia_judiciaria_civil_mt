@@ -1,0 +1,33 @@
+Ferramenta https://ambar.cloud/ 
+https://github.com/RD17/ambar
+Open-source
+
+Trabalha bem com arquivos grandes (> 100 MB)
+Tipos de arquivos suportados:
+  Arquivos ZIP
+  Arquivos de correio (PST)
+  Documentos do MS Office (Word, Excel, Powerpoint, Visio, Publisher)
+  OCR sobre imagens
+  Mensagens de e-mail com anexos
+  Adobe PDF (com OCR)
+  Idiomas do OCR: Eng, Rus, Ita, Deu, Fra, Spa, Pl, Nld
+  Documentos OpenOffice
+  RTF, texto simples
+  HTML / XHTML
+  Processamento multithread
+
+Extrai conteúdo de PDF (mesmo mal formatado e com imagens incorporadas) e faz OCR em imagens
+Fornece ao usuário API REST e IU da WEB simples e fáceis de usar
+É extremamente fácil de implantar (Docker)
+É de código aberto sob a licença Fair Source 1 v0.9
+Fornece ao usuário análise e experiência de pesquisa instantânea fora da caixa
+Tem suporte à pesquisa difusa por palavra, ex: pesquisar 
+  'portug~3': pesquisará 'portug' com até 3 erros = 'portugues', 'portugal'
+Tem suporte à pesquisa difusa por frase, ex: pesquisar 
+  'viajar portugal'~3: pesquisará 'viajar portugal' com até 3 palavras entre eles = 'viajar para portugal', 'viajar de avião à portugal'
+Perquisa arquivos por intervalo de tempo, autor e tamanho
+Aceita combinação de pesquisas
+
+
+
+Contra: Não tem suporte OCR à portugues ainda.
