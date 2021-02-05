@@ -110,3 +110,5 @@ sudo docker run --name container-portainer -p 8888:9000 --restart always -v /var
 
 //para acessar o portainer, no browser 
 //http://localhost:8888
+//usuario admin
+//senha 12345678
