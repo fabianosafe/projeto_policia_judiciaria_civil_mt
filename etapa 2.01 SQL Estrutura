@@ -1,15 +1,27 @@
 /* 1) Construa um script SQL (projeto físico) para criar e popular um banco de dados que deverá ser nominado de conveniencia; */
 
 //acesse o pgadmin pelo browser http://localhost:15432/
-//clique em "Add new server"
-//general > name : dbpolicia
+//clique em "Add new server" e coloque os campos abaixo
+//general > name : srvpostgres
 //conection > host name/address : container-postgres
 //conection > port : 5432
 //conection > Maintenance database : postgres
 //conection > Username : postgres
 //conection > Password : 1234
+//salvar
 
-//com o server criado vá em Tools > Query Tool
+//com o server criado vá em Object > Create > Database
+//database : dbPolicia
+//salvar
+
+//com o database criado vá em Tools > Query Tool
+//clique em postgres/postgres@srvpostgres
+//selecione New Connection
+//muda o Database para dbPolicia
+//clique ok
+//vai aparecer By changing the connection you will lose all your unsaved data for the current connection. Do you want to continue?
+//clique yes
+//feito isso ficará dbPolicia/postgres@srvpostgres
 //cole todo o texto abaixo e execute(f5), vai aparecer a msg : Query returned successfully in xxxx msec.
 
 CREATE SCHEMA conveniencia AUTHORIZATION postgres;
