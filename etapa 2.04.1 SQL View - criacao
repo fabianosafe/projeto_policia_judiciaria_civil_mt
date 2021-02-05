@@ -1,5 +1,8 @@
 /* 4) Crie uma view materializada que liste os cliente e os estilos de cerveja que costuma comprar (exibir nome do cliente e nome do estilo); */
 
+//vá em Tools > Query Tool
+//cole todo o texto abaixo e execute(f5), vai aparecer a msg : Query returned successfully in xxxx msec.
+
 CREATE MATERIALIZED VIEW conveniencia.vwmat_estilo_cliente (
     nome_cliente,
     nome_estilo)
