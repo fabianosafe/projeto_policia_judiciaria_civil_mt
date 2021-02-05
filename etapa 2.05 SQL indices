@@ -1,0 +1,5 @@
+/* 5) Considerando que este banco de dados contém centenas de milhares de registros, */
+/* escreva um script criando os ​ índices necessários para melhorar a performance de */
+/* eventuais consultas; */
+
+
