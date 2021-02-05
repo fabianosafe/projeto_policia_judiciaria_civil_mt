@@ -1,5 +1,31 @@
 /* 5) Considerando que este banco de dados contém centenas de milhares de registros, */
-/* escreva um script criando os ​ índices necessários para melhorar a performance de */
+/* escreva um script criando os índices necessários para melhorar a performance de */
 /* eventuais consultas; */
 
+CREATE INDEX estilo_idx_codigo ON conveniencia.estilo(codigo);
+CREATE INDEX estilo_idx_nome ON conveniencia.estilo(nome);
+
+CREATE INDEX cerveja_idx_codigo ON conveniencia.cerveja(codigo);
+CREATE INDEX cerveja_idx_nome ON conveniencia.cerveja(nome);
+
+CREATE INDEX cliente_idx_codigo ON conveniencia.cliente(codigo);
+CREATE INDEX cliente_idx_nome ON conveniencia.cliente(nome);
+
+CREATE INDEX cidade_idx_codigo ON conveniencia.cidade(codigo);
+CREATE INDEX cidade_idx_nome ON conveniencia.cidade(nome);
+
+CREATE INDEX estado_idx_codigo ON conveniencia.estado(codigo);
+CREATE INDEX estado_idx_nome ON conveniencia.estado(nome);
+
+CREATE INDEX item_venda_idx_codigo ON conveniencia.item_venda(codigo);
+CREATE INDEX item_venda_idx_codigo_venda ON conveniencia.item_venda(codigo_venda);
+CREATE INDEX iten_venda_idx_codigo_cerveja ON conveniencia.item_venda(codigo_cerveja);
+
+CREATE INDEX venda_idx_data_criacao ON conveniencia.venda(data_criacao);
+CREATE INDEX venda_idx_status ON conveniencia.venda(status);
+CREATE INDEX venda_idx_codigo_cliente ON conveniencia.venda(codigo_cliente);
+CREATE INDEX venda_idx_codigo_usuario ON conveniencia.venda(codigo_usuario);
+
+CREATE INDEX usuario_idx_codigo ON conveniencia.usuario(codigo);
+CREATE INDEX usuario_idx_nome ON conveniencia.usuario(nome);
 
