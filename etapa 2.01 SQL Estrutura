@@ -10,7 +10,7 @@
 //conection > Password : 1234
 
 //com o server criado vá em Tools > Query Tool
-//cole todo o texto abaixo e execute(f5)
+//cole todo o texto abaixo e execute(f5), vai aparecer a msg : Query returned successfully in xxxx msec.
 
 CREATE SCHEMA conveniencia AUTHORIZATION postgres;
 
