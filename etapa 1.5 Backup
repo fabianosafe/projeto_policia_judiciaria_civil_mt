@@ -1,4 +1,5 @@
 /* para o servico de backup */
+/* criei a pasta /tmp/bkp */
 /* instalei o cron e deixei agendado o backup */
 
 sudo apt-get install cron
