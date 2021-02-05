@@ -170,7 +170,7 @@ VALUES
 INSERT INTO conveniencia.usuario ("codigo", "nome", "email", "senha", "ativo", "datanascimento")
 VALUES 
   (1, 'Caesar', 'mi.felis@interdumenimnon.ca', 'amet', 0, '2020-05-04'),
-  (2, 'Salvador', 'diam@utpellentesque.net', 'consectetuer', 1, '2021-03-26'),
+  (2, 'postgres', 'diam@utpellentesque.net', 'consectetuer', 1, '2021-03-26'),
   (3, 'Steven', 'nec.urna.suscipit@dolor.org', 'dui.', 1, '2021-04-14'),
   (4, 'Jena', 'justo.nec.ante@Suspendisse.net', 'tincidunt', 0, '2020-08-12'),
   (5, 'Declan', 'ac@arcuNuncmauris.co.uk', 'faucibus', 0, '2022-01-12'),
