@@ -101,15 +101,6 @@ sudo docker run --name container-minio -p 9000:9000 --restart always minio/minio
 //usuario minioadmin
 //senha minioadmin
 
-/* minio client */
-wget https://dl.min.io/client/mc/release/linux-amd64/mc_0.0.20210130005042_amd64.deb
-dpkg -i minio_0.0.20210130005042_amd64.deb
-mc alias set myminio/ http://MINIO-SERVER MYUSER MYPASSWORD
-
-sudo apt update
-sudo apt install snapd
-sudo snap install minio-client --edge --devmode
-
 //utilizei a ferramenta https://www.portainer.io/ para gerenciar os conteiners pelo browser
 //baixando a imagem no docker
 sudo docker pull portainer/portainer
