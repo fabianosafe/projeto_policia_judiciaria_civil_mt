@@ -1,4 +1,13 @@
-/*função criada visando a utilizacao por triggers de outras tabelas tambem*/
+/* 3) A tabela venda necessita de algum recurso de segurança e auditoria. Crie um tabela     */
+/* venda_auditoria e para cada operação de insert, update ou delete na tabela venda haja a   */
+/* inserção de cópia dos registros na tabela vendas_auditoria. Para isso será necessário     */
+/* criar uma trigger para a tabela venda;                                                    */
+
+/*função criada visando a possível utilizacao(com poucos ajustes) por triggers de outras tabelas tambem*/
+
+//vá em Tools > Query Tool
+//cole todo o texto abaixo e execute(f5), vai aparecer a msg : Query returned successfully in xxxx msec.
+
 
 CREATE OR REPLACE FUNCTION conveniencia.fn_auditoria (
 )
