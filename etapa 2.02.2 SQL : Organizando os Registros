@@ -1,4 +1,5 @@
 /*os scripts abaixo foram executados separadamente no editor query*/
+/* não precisará executa-los, o script de inserção foi criado ja com as correções */
 
 /* apaguando as cidades e estados sem referencia */
 delete from conveniencia.cidade 
