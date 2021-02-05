@@ -10,7 +10,6 @@
 
 CREATE TABLE conveniencia.venda_auditoria (
   id             BIGSERIAL,
-  tabela         TEXT       NOT NULL,
   chave          BIGINT     NOT NULL,
   operacao       VARCHAR(1) NOT NULL,
   usuario_codigo BIGINT     NOT NULL,
