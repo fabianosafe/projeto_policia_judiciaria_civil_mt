@@ -1,5 +1,17 @@
 /* 1) Construa um script SQL (projeto físico) para criar e popular um banco de dados que deverá ser nominado de conveniencia; */
 
+//acesse o pgadmin pelo browser http://localhost:15432/
+//clique em "Add new server"
+//general > name : dbpolicia
+//conection > host name/address : container-postgres
+//conection > port : 5432
+//conection > Maintenance database : postgres
+//conection > Username : postgres
+//conection > Password : 1234
+
+//com o server criado vá em Tools > Query Tool
+//cole todo o texto abaixo e execute(f5)
+
 CREATE SCHEMA conveniencia AUTHORIZATION postgres;
 
 CREATE TABLE conveniencia.estado (
@@ -39,6 +51,28 @@ CREATE TABLE conveniencia.usuario (
   datanascimento DATE         ,
   CONSTRAINT pk_usuario PRIMARY KEY (codigo),
   CONSTRAINT usuario_nome_key UNIQUE(nome));
+
+CREATE TABLE conveniencia.estilo (
+  codigo BIGINT      NOT NULL,
+  nome   VARCHAR(50) NOT NULL,
+  CONSTRAINT pk_estilo PRIMARY KEY (codigo));
+
+CREATE TABLE conveniencia.cerveja (
+  codigo             BIGINT        NOT NULL ,
+  sku                VARCHAR(50)   NOT NULL,
+  nome               VARCHAR(80)   NOT NULL,
+  descricao          TEXT          NOT NULL,
+  valor              DECIMAL(10,2) NOT NULL,
+  teor_alcoolico     DECIMAL(10,2) NOT NULL,
+  comissao           DECIMAL(10,2) NOT NULL,
+  sabor              VARCHAR(50)   NOT NULL,
+  origem             VARCHAR(50)   NOT NULL,
+  quantidade_estoque INTEGER,
+  foto               BYTEA,
+  content_type       VARCHAR(100),
+  codigo_estilo      BIGINT        NOT NULL,
+  CONSTRAINT pk_cerveja PRIMARY KEY (codigo),
+  CONSTRAINT cerveja_fk_estilo FOREIGN KEY (codigo_estilo) REFERENCES conveniencia.estilo (codigo) ON DELETE RESTRICT ON UPDATE CASCADE);
 
 CREATE TABLE conveniencia.venda (
   codigo            BIGINT        NOT NULL ,
@@ -88,26 +122,4 @@ CREATE TABLE conveniencia.grupo_permissao (
   CONSTRAINT pk_grupo_permissao PRIMARY KEY (codigo_grupo, codigo_permissao),
   CONSTRAINT permissao_grupo_fk_permissao FOREIGN KEY (codigo_permissao) REFERENCES conveniencia.permissao (codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT permissao_grupo_fk_grupo     FOREIGN KEY (codigo_grupo)     REFERENCES conveniencia.grupo     (codigo) ON DELETE RESTRICT ON UPDATE CASCADE);
-
-CREATE TABLE conveniencia.estilo (
-  codigo BIGINT      NOT NULL,
-  nome   VARCHAR(50) NOT NULL,
-  CONSTRAINT pk_estilo PRIMARY KEY (codigo));
-
-CREATE TABLE conveniencia.cerveja (
-  codigo             BIGINT        NOT NULL ,
-  sku                VARCHAR(50)   NOT NULL,
-  nome               VARCHAR(80)   NOT NULL,
-  descricao          TEXT          NOT NULL,
-  valor              DECIMAL(10,2) NOT NULL,
-  teor_alcoolico     DECIMAL(10,2) NOT NULL,
-  comissao           DECIMAL(10,2) NOT NULL,
-  sabor              VARCHAR(50)   NOT NULL,
-  origem             VARCHAR(50)   NOT NULL,
-  quantidade_estoque INTEGER,
-  foto               BYTEA,
-  content_type       VARCHAR(100),
-  codigo_estilo      BIGINT        NOT NULL,
-  CONSTRAINT pk_cerveja PRIMARY KEY (codigo),
-  CONSTRAINT cerveja_fk_estilo FOREIGN KEY (codigo_estilo) REFERENCES conveniencia.estilo (codigo) ON DELETE RESTRICT ON UPDATE CASCADE);
 
