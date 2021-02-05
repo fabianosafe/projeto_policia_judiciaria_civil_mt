@@ -1,4 +1,13 @@
+/* 3) A tabela venda necessita de algum recurso de segurança e auditoria. Crie um tabela     */
+/* venda_auditoria e para cada operação de insert, update ou delete na tabela venda haja a   */
+/* inserção de cópia dos registros na tabela vendas_auditoria. Para isso será necessário     */
+/* criar uma trigger para a tabela venda;                                                    */
+
 /*Criação da trigger com as 3 operações selecionando(vinculando) a função fn_auditoria para chamada */
+
+//vá em Tools > Query Tool
+//cole todo o texto abaixo e execute(f5), vai aparecer a msg : Query returned successfully in xxxx msec.
+
 CREATE TRIGGER venda_tr
   AFTER INSERT OR UPDATE OR DELETE 
   ON conveniencia.venda FOR EACH ROW 
