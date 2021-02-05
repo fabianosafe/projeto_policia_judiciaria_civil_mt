@@ -136,14 +136,14 @@ CREATE TABLE conveniencia.grupo_permissao (
   CONSTRAINT permissao_grupo_fk_grupo     FOREIGN KEY (codigo_grupo)     REFERENCES conveniencia.grupo     (codigo) ON DELETE RESTRICT ON UPDATE CASCADE);
 
 CREATE TABLE conveniencia.schema_version (
-  installed_rank INTEGER NOT NULL,
+  installed_rank INTEGER       NOT NULL,
   "version"      VARCHAR(50),
-  description    VARCHAR(200) NOT NULL,
-  "type"         VARCHAR(20) NOT NULL,
+  description    VARCHAR(200)  NOT NULL,
+  "type"         VARCHAR(20)   NOT NULL,
   script         VARCHAR(1000) NOT NULL,
   checksun       INTEGER,
-  installed_by   VARCHAR(100) NOT NULL,
+  installed_by   VARCHAR(100)  NOT NULL,
   installed_on   TIMESTAMP(0)  WITHOUT TIME ZONE NOT NULL,
-  execution_time INTEGER, NOT NULL
-  success        SMALLINT NOT NULL,
+  execution_time INTEGER       NOT NULL,
+  success        SMALLINT      NOT NULL,
   CONSTRAINT pk_schema_version PRIMARY KEY (installed_rank));
